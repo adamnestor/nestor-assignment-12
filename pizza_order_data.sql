@@ -1,7 +1,9 @@
 -- CREATE DATABASE
+
 CREATE DATABASE	 pizza_orders;
 
 -- CREATE TABLES
+
 CREATE TABLE customers (
 	customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(255),
