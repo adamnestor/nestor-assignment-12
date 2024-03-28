@@ -135,11 +135,11 @@ ORDER BY total_spent DESC;
 
 -- TOTAL REVENUE BY CUSTOMER BY DATE, DESCENDING ORDER
 
-SELECT customer_name, orders.order_date_time AS `date`, SUM(orders_pizzas.quantity * pizzas.price) AS total_spent
+SELECT customer_name, DATE(orders.order_date_time) AS `date`, SUM(orders_pizzas.quantity * pizzas.price) AS total_spent
 FROM customers
 JOIN orders_customers ON customers.customer_id = orders_customers.customer_id
 JOIN orders ON orders_customers.order_id = orders.order_id
 JOIN orders_pizzas ON orders.order_id = orders_pizzas.order_id
 JOIN pizzas ON orders_pizzas.pizza_id = pizzas.pizza_id
-GROUP BY customer_name, orders.order_date_time
+GROUP BY customer_name, DATE(orders.order_date_time)
 ORDER BY `date` DESC;
